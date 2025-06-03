@@ -1,10 +1,16 @@
 /* Basic Reset & Typography */
 body {
-    font-family: 'Inter', sans-serif; /* Using Inter as requested */
+    font-family: 'Inter', sans-serif;
+    /* Using Inter as requested */
     margin: 0;
     line-height: 1.6;
     color: #333;
     background-color: #f8f8f8;
+}
+
+*::selection{
+    color: #fff;
+    background-color: #000;
 }
 
 .container {
@@ -14,7 +20,8 @@ body {
 }
 
 .section-heading {
-    font-family: serif; /* Large serif headings */
+    font-family: serif;
+    /* Large serif headings */
     font-size: 2.8rem;
     text-align: center;
     margin-bottom: 20px;
@@ -37,7 +44,8 @@ body {
     color: #fff;
     padding: 14px 30px;
     text-decoration: none;
-    border-radius: 8px; /* Rounded corners */
+    border-radius: 8px;
+    /* Rounded corners */
     font-weight: bold;
     border: none;
     cursor: pointer;
@@ -52,7 +60,8 @@ body {
 
 /* Hero Section */
 .hero {
-    background-color: #000; /* Black background */
+    background-color: #000;
+    /* Black background */
     color: #fff;
     padding: 180px 0;
     text-align: center;
@@ -61,13 +70,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 70vh; /* Ensure it takes up a good portion of the viewport */
+    min-height: 70vh;
+    /* Ensure it takes up a good portion of the viewport */
 }
 
 /* Optional: White background with black overlay */
 .hero.white-overlay {
     background-color: #fff;
-    color: #000; /* Text color for white background */
+    color: #000;
+    /* Text color for white background */
 }
 
 .hero.white-overlay::before {
@@ -77,28 +88,36 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Black overlay */
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Black overlay */
     z-index: 0;
 }
 
 .hero-content {
     position: relative;
-    z-index: 1; /* Ensure content is above overlay */
+    z-index: 1;
+    /* Ensure content is above overlay */
 }
 
 .hero-headline {
-    font-size: 5rem; /* Bold typeface */
-    font-weight: 900; /* Extra bold */
+    font-size: 5rem;
+    /* Bold typeface */
+    font-weight: 900;
+    /* Extra bold */
     margin-bottom: 25px;
-    opacity: 1; /* For GSAP fade-in */
-    transform: translateY(20px); /* For GSAP slide-in */
+    opacity: 1;
+    /* For GSAP fade-in */
+    transform: translateY(20px);
+    /* For GSAP slide-in */
 }
 
 .hero-tagline {
     font-size: 1.8rem;
     margin-bottom: 40px;
-    opacity: 1; /* For GSAP fade-in */
-    transform: translateY(20px); /* For GSAP slide-in */
+    opacity: 1;
+    /* For GSAP fade-in */
+    transform: translateY(20px);
+    /* For GSAP slide-in */
 }
 
 .hero-ctas {
@@ -112,8 +131,10 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 1.1rem;
-    transform: translateX(-50px); /* For GSAP slide-in */
-    opacity: 1; /* For GSAP slide-in */
+    transform: translateX(-50px);
+    /* For GSAP slide-in */
+    opacity: 1;
+    /* For GSAP slide-in */
 }
 
 .hero-ctas .explore-lookbook {
@@ -125,16 +146,19 @@ body {
     gap: 5px;
     transition: color 0.3s ease;
     font-size: 1.1rem;
-    opacity: 1; /* For GSAP slide-in */
-    transform: translateX(50px); /* For GSAP slide-in */
+    opacity: 1;
+    /* For GSAP slide-in */
+    transform: translateX(50px);
+    /* For GSAP slide-in */
 }
 
 .hero-ctas .explore-lookbook:hover {
-    color: #ffd700; /* Gold color on hover */
+    color: #ffd700;
+    /* Gold color on hover */
 }
 
-/* About Retrofit Section */
-.about-retrofit {
+/* About Modeswitch Section */
+.about-ModeSwitch {
     padding: 100px 0;
     background-color: #f9f9f9;
 }
@@ -145,21 +169,25 @@ body {
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
-    opacity: 1; /* For scroll-triggered fade-in */
-    transform: translateY(20px); /* For scroll-triggered fade-in */
+    opacity: 1;
+    /* For scroll-triggered fade-in */
+    transform: translateY(20px);
+    /* For scroll-triggered fade-in */
 }
 
 /* Featured Collections Section */
 .featured-collections {
     padding: 100px 0;
-    background-color: #000; /* Black background */
+    background-color: #000;
+    /* Black background */
     color: #fff;
 }
 
 .featured-collections .section-heading,
 .featured-collections .divider {
     color: #212121;
-    background-color: #fff; /* Divider color for black background */
+    background-color: #fff;
+    /* Divider color for black background */
 }
 
 .collections-grid {
@@ -172,19 +200,23 @@ body {
 .collection-card {
     position: relative;
     overflow: hidden;
-    border: 2px solid #fff; /* White border outlines */
-    border-radius: 8px; /* Rounded corners */
+    border: 2px solid #fff;
+    /* White border outlines */
+    border-radius: 8px;
+    /* Rounded corners */
     transition: border-color 0.3s ease;
     cursor: pointer;
 }
 
 .collection-card:hover {
-    border-color: #ffd700; /* Gold border on hover */
+    border-color: #ffd700;
+    /* Gold border on hover */
 }
 
 .collection-image {
     width: 100%;
-    height: 300px; /* Fixed height for consistent grid */
+    height: 300px;
+    /* Fixed height for consistent grid */
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -195,12 +227,15 @@ body {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensure images cover the area */
-    transition: transform 0.4s ease-in-out; /* Image zoom */
+    object-fit: cover;
+    /* Ensure images cover the area */
+    transition: transform 0.4s ease-in-out;
+    /* Image zoom */
 }
 
 .collection-card:hover .collection-image img {
-    transform: scale(1.1); /* Image zoom on hover */
+    transform: scale(1.1);
+    /* Image zoom on hover */
 }
 
 .collection-overlay {
@@ -213,12 +248,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0; /* Hidden by default */
-    transition: opacity 0.4s ease; /* Reveal title */
+    opacity: 0;
+    /* Hidden by default */
+    transition: opacity 0.4s ease;
+    /* Reveal title */
 }
 
 .collection-card:hover .collection-overlay {
-    opacity: 1; /* Reveal title on hover */
+    opacity: 1;
+    /* Reveal title on hover */
 }
 
 .collection-overlay h3 {
@@ -236,7 +274,8 @@ body {
 }
 
 .best-sellers-grid {
-    display: grid; /* Changed to grid for masonry-like effect, can be flex for horizontal scroll */
+    display: grid;
+    /* Changed to grid for masonry-like effect, can be flex for horizontal scroll */
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
     margin-top: 50px;
@@ -250,7 +289,8 @@ body {
 .product-card {
     background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 8px; /* Rounded corners */
+    border-radius: 8px;
+    /* Rounded corners */
     padding: 20px;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
@@ -271,7 +311,8 @@ body {
 .product-image {
     position: relative;
     width: 100%;
-    height: 280px; /* Fixed height for product images */
+    height: 280px;
+    /* Fixed height for product images */
     overflow: hidden;
     margin-bottom: 15px;
     border-radius: 5px;
@@ -289,11 +330,13 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    opacity: 0; /* Hidden by default */
+    opacity: 0;
+    /* Hidden by default */
 }
 
 .product-card:hover .product-image .hover-image {
-    opacity: 1; /* Color image on hover */
+    opacity: 1;
+    /* Color image on hover */
 }
 
 .product-name {
@@ -335,20 +378,25 @@ body {
 /* Lookbook / Instagram Feed Section */
 .lookbook {
     padding: 100px 0;
-    background-color: #fff; /* White section */
-    border-top: 2px solid #000; /* Black border lines */
-    border-bottom: 2px solid #000; /* Black border lines */
+    background-color: #fff;
+    /* White section */
+    border-top: 2px solid #000;
+    /* Black border lines */
+    border-bottom: 2px solid #000;
+    /* Black border lines */
 }
 
 .lookbook .section-heading,
 .lookbook .divider {
     color: #fff;
-    background-color: #141414; /* Divider color for white background */
+    background-color: #141414;
+    /* Divider color for white background */
 }
 
 .lookbook-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 3x3 grid, responsive */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* 3x3 grid, responsive */
     gap: 15px;
     margin-top: 50px;
 }
@@ -357,7 +405,8 @@ body {
     display: block;
     position: relative;
     overflow: hidden;
-    border-radius: 8px; /* Rounded corners */
+    border-radius: 8px;
+    /* Rounded corners */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
@@ -371,29 +420,41 @@ body {
 
 .lookbook-item:hover img {
     transform: scale(1.05);
-    filter: brightness(0.7); /* Darken image on hover */
+    filter: brightness(0.7);
+    /* Darken image on hover */
 }
 
 /* Lightbox Modal for Lookbook */
 .lightbox-modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1000; /* Sit on top */
-    padding-top: 60px; /* Location of the box */
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1000;
+    /* Sit on top */
+    padding-top: 10px;
+    /* Location of the box */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Black w/ opacity */
 }
 
 .lightbox-content {
     margin: auto;
     display: block;
-    width: 80%;
+    /* width: 80%; */
+    height: 85%;
     max-width: 700px;
     border-radius: 8px;
+    object-fit: cover;
+    object-position: center;
 }
 
 .close-lightbox {
@@ -426,30 +487,38 @@ body {
     margin: 50px auto;
     padding: 30px;
     text-align: center;
-    background-color: #fff; /* White background */
-    border-radius: 10px; /* Rounded corners */
+    background-color: #fff;
+    /* White background */
+    border-radius: 10px;
+    /* Rounded corners */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    min-height: 200px; /* Ensure enough height for content */
-    display: flex; /* Use flexbox for centering content */
+    min-height: 200px;
+    /* Ensure enough height for content */
+    display: flex;
+    /* Use flexbox for centering content */
     align-items: center;
     justify-content: center;
 }
 
 .testimonial-slide {
-    position: absolute; /* For smooth transitions */
+    position: absolute;
+    /* For smooth transitions */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
     opacity: 0;
-    transition: opacity 0.8s ease-in-out; /* Smooth auto-slide */
+    transition: opacity 0.8s ease-in-out;
+    /* Smooth auto-slide */
     text-align: center;
 }
 
 .testimonial-slide.active {
     opacity: 1;
-    position: relative; /* Bring active slide back to flow */
-    transform: translate(-50%, -50%); /* Re-center after becoming relative */
+    position: relative;
+    /* Bring active slide back to flow */
+    transform: translate(-50%, -50%);
+    /* Re-center after becoming relative */
 }
 
 .testimonial-text {
@@ -457,7 +526,8 @@ body {
     line-height: 1.7;
     margin-bottom: 20px;
     font-style: italic;
-    color: #333; /* Simple black text */
+    color: #333;
+    /* Simple black text */
 }
 
 .testimonial-author {
@@ -518,7 +588,8 @@ body {
     flex-grow: 1;
     padding: 15px 20px;
     border: 1px solid #ccc;
-    border-radius: 8px; /* Rounded corners */
+    border-radius: 8px;
+    /* Rounded corners */
     font-size: 1.1rem;
     outline: none;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -536,18 +607,26 @@ body {
 }
 
 .newsletter-form .subscribe-button:hover {
-    animation: buttonBounce 0.6s ease-in-out infinite alternate; /* Button bounce */
+    animation: buttonBounce 0.6s ease-in-out infinite alternate;
+    /* Button bounce */
 }
 
 @keyframes buttonBounce {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-5px); }
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-5px);
+    }
 }
 
 /* Footer Section */
 .site-footer {
-    background-color: #000; /* Pure black background */
-    color: #fff; /* White text */
+    background-color: #000;
+    /* Pure black background */
+    color: #fff;
+    /* White text */
     padding: 60px 0;
 }
 
@@ -589,9 +668,11 @@ body {
 }
 
 .footer-column svg {
-    width: 20px; /* Minimal line icons */
+    width: 20px;
+    /* Minimal line icons */
     height: 20px;
-    stroke: currentColor; /* Inherit color from parent */
+    stroke: currentColor;
+    /* Inherit color from parent */
     fill: none;
 }
 
@@ -620,7 +701,8 @@ body {
 
     .hero-ctas .button,
     .hero-ctas .explore-lookbook {
-        transform: none; /* Disable initial transform for smaller screens if needed */
+        transform: none;
+        /* Disable initial transform for smaller screens if needed */
         opacity: 1;
     }
 
@@ -635,7 +717,8 @@ body {
     .collections-grid,
     .best-sellers-grid,
     .lookbook-grid {
-        grid-template-columns: 1fr; /* Single column for smaller screens */
+        grid-template-columns: 1fr;
+        /* Single column for smaller screens */
     }
 
     .newsletter-form {

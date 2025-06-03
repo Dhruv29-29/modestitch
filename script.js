@@ -7,7 +7,7 @@ gsap.from('.hero-tagline', { opacity: 0, y: 30, duration: 1.2, ease: 'power3.out
 gsap.from('.hero-ctas .button', { x: -50, opacity: 0, duration: 1, ease: 'power2.out', delay: 1, stagger: 0.2 });
 gsap.from('.hero-ctas .explore-lookbook', { x: 50, opacity: 0, duration: 1, ease: 'power2.out', delay: 1.2 });
 
-// About Retrofit Section Animations (Scroll-triggered fade-in text and line dividers)
+// About ModeSwitch Section Animations (Scroll-triggered fade-in text and line dividers)
 gsap.utils.toArray('.about-text').forEach(text => {
     gsap.from(text, {
         opacity: 0,
@@ -22,7 +22,7 @@ gsap.utils.toArray('.about-text').forEach(text => {
     });
 });
 
-gsap.utils.toArray('.about-retrofit .divider').forEach(divider => {
+gsap.utils.toArray('.about-Modeswitch .divider').forEach(divider => {
     gsap.from(divider, {
         scaleX: 0,
         transformOrigin: 'center center',
