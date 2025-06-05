@@ -1,125 +1,144 @@
-// T-shirt data with colors and background texts
-        const tshirts = [
-            {
-                color: 'linear-gradient(135deg, #00355F 0%, #0077A8 100%)',
-                text: 'STRENGTH'
-            },
-            {
-                color: 'linear-gradient(135deg, #174227 0%, #2e8b57 100%)',
-                text: 'PSYCHEDELICS'
-            },
-            {
-                color: 'linear-gradient(135deg, #171715 0%, #3b3a30 100%)',
-                text: 'STRENGTH'
-            },
-            {
-                color: 'linear-gradient(135deg, #307179 0%, #6DBDC3 100%)',
-                text: 'POLAR'
-            },
-            {
-                color: 'linear-gradient(135deg, #F2E5D4 0%, #D7BFA8 100%)',
-                text: 'POLAR'
-            }
-        ];
+// Ensure GSAP and ScrollTrigger are loaded
+gsap.registerPlugin(ScrollTrigger);
 
-        let currentIndex = 0;
-        const slides = document.querySelectorAll('.tshirt-slide');
-        const bgText = document.getElementById('bgText');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.querySelector('.nav-links');
+// Hero Section Animations
+// gsap.from('.hero-headline', { opacity: 0, y: 30, duration: 1.2, ease: 'power3.out', delay: 0.5 });
+// gsap.from('.hero-tagline', { opacity: 0, y: 30, duration: 1.2, ease: 'power3.out', delay: 0.7 });
+// gsap.from('.hero-ctas .button', { x: -50, opacity: 0, duration: 1, ease: 'power2.out', delay: 1, stagger: 0.2 });
+// gsap.from('.hero-ctas .explore-lookbook', { x: 50, opacity: 0, duration: 1, ease: 'power2.out', delay: 1.2 });
 
-        function updateSlide() {
-            // Remove active class from all slides
-            slides.forEach((slide, index) => {
-                slide.classList.remove('active', 'prev');
-                if (index < currentIndex) {
-                    slide.classList.add('prev');
-                }
-            });
-
-            // Add active class to current slide
-            slides[currentIndex].classList.add('active');
-
-            // Update background
-            document.body.style.background = tshirts[currentIndex].color;
-
-            // Update background text
-            bgText.textContent = tshirts[currentIndex].text;
-
-            // Add animation to background text
-            bgText.style.transform = 'translate(-50%, -50%) scale(0.8)';
-            setTimeout(() => {
-                bgText.style.transform = 'translate(-50%, -50%) scale(1)';
-            }, 100);
+// About ModeSwitch Section Animations (Scroll-triggered fade-in text and line dividers)
+gsap.utils.toArray('.about-text').forEach(text => {
+    gsap.from(text, {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+            trigger: text,
+            start: 'top 85%', // When the top of the text enters 85% of the viewport
+            toggleActions: 'play none none reverse' // Play on enter, reverse on leave
         }
+    });
+});
 
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % slides.length;
-            updateSlide();
+gsap.utils.toArray('.about-Modeswitch .divider').forEach(divider => {
+    gsap.from(divider, {
+        scaleX: 0,
+        transformOrigin: 'center center',
+        duration: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+            trigger: divider,
+            start: 'top 90%',
+            toggleActions: 'play none none reverse'
         }
+    });
+});
 
-        function prevSlide() {
-            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-            updateSlide();
+// Featured Collections Animations (Scroll-triggered fade-in and reveal)
+gsap.utils.toArray('.collection-card').forEach(card => {
+    gsap.from(card, {
+        opacity: 0,
+        y: 50,
+        scale: 0.95,
+        duration: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+            trigger: card,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
         }
+    });
+});
 
-        // Event listeners
-        nextBtn.addEventListener('click', nextSlide);
-        prevBtn.addEventListener('click', prevSlide);
+// Testimonial Slider
+const slides = document.querySelectorAll('.testimonial-slide');
+const prevArrow = document.querySelector('.prev-arrow');
+const nextArrow = document.querySelector('.next-arrow');
+let currentIndex = 0;
+let autoSlideInterval;
 
-        // Mobile menu toggle
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileMenuBtn.classList.toggle('active');
-        });
+function showSlide(index) {
+    // Ensure index wraps around
+    currentIndex = (index + slides.length) % slides.length;
 
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.classList.remove('active');
-            });
-        });
+    slides.forEach((slide, i) => {
+        if (i === currentIndex) {
+            gsap.to(slide, { opacity: 1, duration: 0.8, ease: 'power2.out', zIndex: 1 });
+            slide.classList.add('active');
+        } else {
+            gsap.to(slide, { opacity: 0, duration: 0.8, ease: 'power2.out', zIndex: 0 });
+            slide.classList.remove('active');
+        }
+    });
+}
 
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.nav') && navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.classList.remove('active');
-            }
-        });
+function startAutoSlide() {
+    // Clear any existing interval to prevent multiple intervals running
+    clearInterval(autoSlideInterval);
+    autoSlideInterval = setInterval(() => {
+        showSlide(currentIndex + 1);
+    }, 5000); // Auto-slide every 5 seconds
+}
 
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') nextSlide();
-            if (e.key === 'ArrowLeft') prevSlide();
-        });
+function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+}
 
-        // Removed auto-slide - now only manual navigation
+if (prevArrow && nextArrow) {
+    prevArrow.addEventListener('click', () => {
+        stopAutoSlide(); // Stop auto-slide on manual interaction
+        showSlide(currentIndex - 1);
+        startAutoSlide(); // Restart auto-slide after a brief delay or immediately
+    });
+    nextArrow.addEventListener('click', () => {
+        stopAutoSlide(); // Stop auto-slide on manual interaction
+        showSlide(currentIndex + 1);
+        startAutoSlide(); // Restart auto-slide
+    });
 
-        // Smooth scroll for navigation links
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                // Add smooth scrolling logic here if you have multiple sections
-            });
-        });
+    // Initial display and start auto-slide
+    showSlide(currentIndex);
+    startAutoSlide();
+}
 
-        // Initialize
-        updateSlide();
+// Lookbook Lightbox functionality
+const lookbookItems = document.querySelectorAll('.lookbook-item');
+const lightboxModal = document.getElementById('lightbox-modal');
+const lightboxImg = document.getElementById('lightbox-img');
+const closeLightbox = document.querySelector('.close-lightbox');
 
-        // Add parallax effect to floating elements
-        window.addEventListener('mousemove', (e) => {
-            const elements = document.querySelectorAll('.floating-element');
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
+lookbookItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent default link behavior
+        const imgSrc = item.getAttribute('data-lightbox-src');
+        lightboxImg.src = imgSrc;
+        lightboxModal.style.display = 'block';
+        gsap.fromTo(lightboxModal, { opacity: 0 }, { opacity: 1, duration: 0.3 });
+        gsap.fromTo(lightboxImg, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'back.out(1.7)' });
+    });
+});
 
-            elements.forEach((element, index) => {
-                const speed = (index + 1) * 0.5;
-                const translateX = (x - 0.5) * speed * 50;
-                const translateY = (y - 0.5) * speed * 50;
-                element.style.transform = `translate(${translateX}px, ${translateY}px)`;
-            });
-        });
+if (closeLightbox) {
+    closeLightbox.addEventListener('click', () => {
+        gsap.to(lightboxModal, { opacity: 0, duration: 0.3, onComplete: () => {
+            lightboxModal.style.display = 'none';
+        }});
+    });
+}
+
+// Close lightbox when clicking outside the image
+if (lightboxModal) {
+    lightboxModal.addEventListener('click', (e) => {
+        if (e.target === lightboxModal) {
+            gsap.to(lightboxModal, { opacity: 0, duration: 0.3, onComplete: () => {
+                lightboxModal.style.display = 'none';
+            }});
+        }
+    });
+}
+
+
+// Newsletter Signup Button Bounce Animation (CSS handles the animation on hover)
+// No specific GSAP needed here as CSS @keyframes are used.
